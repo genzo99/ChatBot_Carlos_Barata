@@ -12,7 +12,7 @@ def obter_resposta(texto: str) -> str:
         'como te chamas?': "O meu nome é: Bot :)",
         ('bye', 'adeus', 'tchau'): "Gostei de falar contigo! Até breve...",
 
-        # Novas interações exigidas pelos testes
+    
         'história de portugal': "Portugal tem uma história rica que inclui os Descobrimentos e a expansão marítima.",
         'cozinhar': "Cozinhar é uma arte que combina ingredientes, técnicas e criatividade.",
         'programar': "Programar é escrever instruções para que o computador execute tarefas.",
@@ -185,4 +185,8 @@ class TestObterResposta(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    unittest.main()
+    import sys
+    if len(sys.argv) > 1 and sys.argv[1] == "test":
+        unittest.main()
+    else:
+        main()
