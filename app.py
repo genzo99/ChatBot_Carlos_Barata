@@ -2,37 +2,37 @@ import os
 from datetime import datetime
 
 def obter_resposta(texto: str) -> str:
-    comando: str = texto.lower()
-
-    # if comando in ('olá', 'boa tarde', 'bom dia'):
-    #     return 'Olá tudo bem!'
-    # if comando == 'como estás':
-    #     return 'Estou bem, obrigado!'
-    # if comando == 'como te chamas?':
-    #     return 'O meu nome é: Bot :)'
-    # if comando == 'tempo':
-    #     return 'Está um dia de sol!'
-    # if comando in ('bye', 'adeus', 'tchau'):
-    #     return 'Gostei de falar contigo! Até breve...'
-    # if 'horas' in comando:
-    #     return f'São: {datetime.now():%H:%M} horas'
-    # if 'data' in comando:
-    #     return f'Hoje é dia: {datetime.now():%d-%m-%Y}'
-
-    # return f'Desculpa, não entendi a questão! {texto}'
+    comando = texto.lower()
 
     respostas = {
-        ('olá', 'boa tarde', 'bom dia'): 'Olá tudo bem!',
-        'como estás': 'Estou bem, obrigado!',
-        'como te chamas?': 'O meu nome é: Bot :)',
-        'tempo': 'Está um dia de sol!',
-        ('bye', 'adeus', 'tchau'): 'Gostei de falar contigo! Até breve...',
-        'onde moras': 'Vivo dentro deste programa, no teu computador :)',
-        'qual a tua idade': 'Tenho a idade do código que me criou!',
-        'gostas de python': 'Adoro Python, é a linguagem em que eu fui escrito!',
-        'piada': 'Porque é que o programador foi ao médico? Porque tinha um bug!',
-        'ajuda': 'Podes perguntar-me sobre tempo, horas, data, ou apenas dizer olá.',
+        ('olá', 'boa tarde', 'bom dia'): "Olá tudo bem!",
+        'como estás': "Estou bem, obrigado!",
+        'como te chamas?': "O meu nome é: Bot :)",
+        ('bye', 'adeus', 'tchau'): "Gostei de falar contigo! Até breve...",
+        'história de portugal': "Portugal tem uma história rica que inclui os Descobrimentos e a expansão marítima.",
+        'cozinhar': "Cozinhar é uma arte que combina ingredientes, técnicas e criatividade.",
+        'programar': "Programar é escrever instruções para que o computador execute tarefas.",
+        'desenvolvimento web': "O desenvolvimento web envolve a criação de sites e aplicações web...",
+        'ia': "A inteligência artificial é um campo da ciência da computação que se concentra na criação de sistemas que podem realizar tarefas que normalmente requerem inteligência humana.",
+        'saúde': "A saúde é um estado de completo bem-estar físico, mental e social, e não apenas a ausência de doenças ou enfermidades.",
+        'indisposição': "Sintomas de indisposição podem incluir fadiga, dor de cabeça, náusea e outros sinais de que algo não está bem.",
     }
+
+    for chave, resposta in respostas.items():
+        if isinstance(chave, tuple):
+            if comando in chave:
+                return resposta
+        elif chave in comando:
+            return resposta
+
+    if "horas" in comando:
+        return f"São: {datetime.now():%H:%M} horas"
+
+    if "data" in comando:
+        return f"Hoje é dia: {datetime.now():%d-%m-%Y}"
+
+    return f"Desculpa, não entendi a questão! {texto}"
+
 
     for chave, resposta in respostas.items():
         if isinstance(chave, tuple):
