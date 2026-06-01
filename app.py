@@ -39,7 +39,8 @@ def obter_resposta(texto: str) -> str:
             if comando in chave:
                 return resposta
         elif chave in comando:
-            return resposta
+            if chave in comando:
+                return resposta
 
     if 'horas' in comando:
         return f'São: {datetime.now():%H:%M} horas'
@@ -65,7 +66,6 @@ def chat() -> None:
 
     print('Chat acabou')
     print()
-
 
 
 def main() -> None:
